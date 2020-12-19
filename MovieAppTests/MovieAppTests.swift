@@ -15,16 +15,15 @@ class MovieAppTests: XCTestCase {
     // Test Case 1 : Test fetching movie success,
     // only test for popular because the rest of endpoint is have same format
     func testFetchMoviesSuccess(){
-        let movieProvider = APICallManager.instance
-        let movieExpectaion = expectation(description: "Popular")
+        let APIInstance = APICallManager.instance
+        let movieExpectation = expectation(description: "Popular")
         var movieResponse: MoviesResponseNew?
 
-        movieProvider.fetchMovies(from: .popular) { (result: Result<MoviesResponseNew,APICallManager.APIServiceError>) in
+        APIInstance.fetchMovies(from: .popular) { (result: Result<MoviesResponseNew,APICallManager.APIServiceError>) in
             switch result {
             case .success(let response):
-//                print("RES", response)
                 movieResponse = response
-                movieExpectaion.fulfill()
+                movieExpectation.fulfill()
             case .failure(let error):
                 print("ERROR",error.localizedDescription)
             }
@@ -39,17 +38,17 @@ class MovieAppTests: XCTestCase {
     
     // Test Case 2 : get detail movie
     func testFetchDetailMovie(){
-        let movieProvider = APICallManager.instance
-        let movieExpectaion = expectation(description: "Movie Detail")
+        let APIInstance = APICallManager.instance
+        let movieExpectation = expectation(description: "Movie Detail")
         var movieResponse: MovieModel?
         let mockMovie = MovieModel.dummy
         
         
-        movieProvider.fetchMovieDetail(movieId: mockMovie.id) { (result: Result<MovieModel,APICallManager.APIServiceError>) in
+        APIInstance.fetchMovieDetail(movieId: mockMovie.id) { (result: Result<MovieModel,APICallManager.APIServiceError>) in
             switch result {
             case .success(let response):
                 movieResponse = response
-                movieExpectaion.fulfill()
+                movieExpectation.fulfill()
             case .failure(let error):
                 print("ERROR",error.localizedDescription)
             }
@@ -65,17 +64,17 @@ class MovieAppTests: XCTestCase {
     
     // Test Case 3 : get movie review
     func testFetchMovieReview(){
-        let movieProvider = APICallManager.instance
-        let movieExpectaion = expectation(description: "Movie Review")
+        let APIInstance = APICallManager.instance
+        let movieExpectation = expectation(description: "Movie Review")
         var reviewResponse: ListReview?
         let mockMovie = MovieModel.dummy
         
-        movieProvider.fetchMovieReview(movieId: mockMovie.id) {  (result: Result<ListReview,APICallManager.APIServiceError>) in
+        APIInstance.fetchMovieReview(movieId: mockMovie.id) {  (result: Result<ListReview,APICallManager.APIServiceError>) in
             
             switch result {
             case .success(let response):
                 reviewResponse = response
-                movieExpectaion.fulfill()
+                movieExpectation.fulfill()
             case .failure(let error):
                 print("ERROR",error.localizedDescription)
             }
@@ -92,7 +91,6 @@ class MovieAppTests: XCTestCase {
     func testAddMovieIdToFavourite() {
         let idAdded = "10000"
         var favMovieNew = [Favourite]()
-//        let detailController = DetailMovieController()
         //add to fav list
         let fav = Favourite(context: PersistenceService.context)
         fav.movieId = idAdded
