@@ -147,7 +147,6 @@ extension HomepageController : UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: listCellIdentifier, for: indexPath) as! listCell
         if currentData == "popular" {
             cell.cellData = popularMovie[indexPath.item]

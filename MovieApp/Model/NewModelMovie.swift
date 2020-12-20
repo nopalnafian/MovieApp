@@ -27,7 +27,7 @@ public struct MovieModel: Codable {
     public let adult: Bool
     public let backdropPath: String
     var backdropUrl : URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath )")!
     }
 }
 
@@ -61,7 +61,7 @@ public struct ListReview: Codable {
     
 }
 
-
+//dummy data for testing
 extension MovieModel {
     
     static var dumies: [MovieModel] {

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol DetailMovieControllerProtocol: class {
-//    func displayData(data: MoviesResponseNew)
     func displayData(data: MovieModel)
     func displayReview(data: ListReview)
     
@@ -29,7 +28,6 @@ protocol DetailMoviePresenterProtocol: class {
 
 protocol DetailMovieInteractorProtocol: class {
     var presenter: DetailMoviePresenterProtocol? { get set }
-//    func getDataFromAPI(category: APICallManager.Endpoint)
     func getReviewDataFromAPI(movieId : Int)
     func getDetailMovieData(movieId : Int)
 

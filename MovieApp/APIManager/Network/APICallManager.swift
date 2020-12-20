@@ -33,6 +33,7 @@ class APICallManager {
         case topRated = "top_rated"
     }
     
+    //error service
     public enum APIServiceError: Error {
         case apiError
         case invalidEndpoint
@@ -52,8 +53,6 @@ class APICallManager {
                 return "no data were received from fetching"
             case .decodeError:
                 return "error while decoding"
-            default:
-                return "error"
             }
         }
     }
@@ -84,7 +83,6 @@ class APICallManager {
                 }
                 do {
                     let values = try self.jsonDecoder.decode(T.self, from: data)
-                    print("value", values)
                     completion(.success(values))
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
@@ -106,30 +104,27 @@ class APICallManager {
         }.resume()
     }
     
-    
+    //fetch movie List
     public func fetchMovies(from endpoint: Endpoint, result: @escaping (Result<MoviesResponseNew, APIServiceError>) -> Void) {
         let movieURL = baseURL
             .appendingPathComponent("movie")
             .appendingPathComponent(endpoint.rawValue)
-        
-        //        print("movieUrl", movieURL)
         fetchResources(url: movieURL, completion: result)
     }
     
     
-    
+    //fetch single movie detail with id
     public func fetchMovieDetail(movieId: Int, result: @escaping (Result<MovieModel, APIServiceError>) -> Void) {
         
         
         let movieURL = baseURL
             .appendingPathComponent("movie")
             .appendingPathComponent(String(movieId))
-        
-        
-//        print("movieUrl", movieURL)
+
         fetchResources(url: movieURL, completion: result)
     }
     
+    //fetch movie review
     public func fetchMovieReview(movieId: Int, result: @escaping (Result<ListReview, APIServiceError>) -> Void) {
         
         let movieURL = baseURL

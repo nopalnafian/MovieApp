@@ -25,13 +25,13 @@ class listCell: UICollectionViewCell {
         }
     }
     
-    var cellDataFav : MovieDummyModel? {
-        didSet {
-            self.titleLabel.text = cellDataFav?.movieTitle
-            self.dateLabel.text = cellDataFav?.releaseDate
-            self.descLabel.text = cellDataFav?.desc
-        }
-    }
+//    var cellDataFav : MovieDummyModel? {
+//        didSet {
+//            self.titleLabel.text = cellDataFav?.movieTitle
+//            self.dateLabel.text = cellDataFav?.releaseDate
+//            self.descLabel.text = cellDataFav?.desc
+//        }
+//    }
     
     var cellDataFavNew : Favourite? {
         didSet {

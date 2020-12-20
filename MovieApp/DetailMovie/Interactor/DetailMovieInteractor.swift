@@ -20,8 +20,6 @@ class DetailMovieInteractor: DetailMovieInteractorProtocol {
             
             switch result {
             case .success(let reviewResponse):
-                //                print("Responese", reviewResponse)
-                
                 presenter?.displayReview(data: reviewResponse)
             case .failure(let error):
                 print("ERROR guys",error.localizedDescription)

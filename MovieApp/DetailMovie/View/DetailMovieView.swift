@@ -15,7 +15,6 @@ class DetailMovieView: UIView {
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
-//        flow.minimumLineSpacing = 0;
 
         let cv = UICollectionView(frame: .zero , collectionViewLayout: layout)
         cv.backgroundColor = .clear
@@ -57,9 +56,7 @@ class DetailMovieView: UIView {
         
         
         btn.setImage(image, for: .normal)
-//        image?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal)
         btn.imageView?.contentMode = .scaleAspectFill
-//        btn.imageEdgeInsets = UIEdgeInsets(top: 80, left: 80, bottom: 80, right: 80)
         btn.contentVerticalAlignment = .fill
         btn.contentHorizontalAlignment = .fill
         btn.imageView?.tintColor = .systemRed
@@ -127,7 +124,6 @@ class DetailMovieView: UIView {
         titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
 
         containerView.addSubview(favouriteButton)
-//        favouriteButton.backgroundColor = .gray
         favouriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         favouriteButton.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 0).isActive = true
         favouriteButton.heightAnchor.constraint(equalToConstant: 24).isActive = true

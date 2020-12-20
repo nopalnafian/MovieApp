@@ -154,7 +154,6 @@ class DetailMovieController: UIViewController, DetailMovieControllerProtocol {
     }
     
     func getData() {
-//        print("get review")
         presenter?.getReviewDataFromAPI(movieId: movieId!)
     }
     
@@ -182,7 +181,6 @@ class DetailMovieController: UIViewController, DetailMovieControllerProtocol {
     }
     
     func displayReview(data: ListReview) {
-//        print("data review", data.results)
         self.dataReview = data.results
     }
 

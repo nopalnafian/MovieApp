@@ -12,7 +12,6 @@ class FavMovieController: UIViewController {
     
     private var favMovieView: FavMovieView!
     private var listCellIdentifier = "listCellIdentifier"
-    var favMovie = [MovieDummyModel]()
     var favMovieNew = [Favourite]()
     
     override func viewDidLoad() {
@@ -34,7 +33,6 @@ class FavMovieController: UIViewController {
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .systemBlue
-        getData()
         setupCV()
     }
     
@@ -57,19 +55,10 @@ class FavMovieController: UIViewController {
             let fav = try PersistenceService.context.fetch(fetchRequest)
             self.favMovieNew = fav
             favMovieView.collectionView.reloadData()
-//            printFav()
         } catch {
             
         }
         
-    }
-    
-//    func printFav() {
-//        favMovieNew.forEach({print($0.movieTitle)})
-//    }
-    
-    func getData() {
-        favMovie = MovieDummyModel.getDummyDataFavorite()
     }
     
     func setupCV() {
@@ -105,8 +94,6 @@ extension FavMovieController : UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        print("tapped", indexPath.item)
         let detailMovie = DetailMovieController()
         detailMovie.movieId = Int(favMovieNew[indexPath.item].movieId!)
         navigationController?.pushViewController(detailMovie, animated: true)

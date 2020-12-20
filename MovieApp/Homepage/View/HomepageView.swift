@@ -9,13 +9,6 @@ import UIKit
 
 class HomepageView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     let collectionView1 : UICollectionView = {
 
@@ -38,7 +31,6 @@ class HomepageView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .systemBlue
         btn.setTitle("Category", for: .normal)
-//        btn.titleLabel?.text = "Ca tegory"
         btn.titleLabel?.tintColor = UIColor.white
         
         
